@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>474</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Qt ITK Connection</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>474</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionOpenImage"/>
+   </widget>
+   <widget class="QMenu" name="menuFilters">
+    <property name="title">
+     <string>Fi&amp;lters</string>
+    </property>
+    <addaction name="actionBinaryThresholdFilter"/>
+    <addaction name="actionGeneralThresholdFilter"/>
+    <addaction name="actionCannyEdgeDetectionFilter"/>
+    <addaction name="actionRescaleIntensityFilter"/>
+    <addaction name="actionNormalizeFilter"/>
+    <addaction name="actionSigmoidFilter"/>
+    <addaction name="actionDerivativeFilter"/>
+    <addaction name="actionGradientAnisotropicDifussionFilter"/>
+   </widget>
+   <widget class="QMenu" name="menuSegmentation">
+    <property name="title">
+     <string>&amp;Segmentation</string>
+    </property>
+    <widget class="QMenu" name="menuRegionGrowing">
+     <property name="title">
+      <string>&amp;Region growing</string>
+     </property>
+     <addaction name="actionConnectedThresholdSegmentation"/>
+     <addaction name="actionOtsuThresholdSegmentation"/>
+     <addaction name="actionNeighborhoodConnectedSegmentation"/>
+     <addaction name="actionConfidenceConnectedSegmentation"/>
+     <addaction name="actionIsolatedConnected"/>
+    </widget>
+    <widget class="QMenu" name="menuWatershedBased">
+     <property name="title">
+      <string>&amp;Watershed based</string>
+     </property>
+     <addaction name="actionWatershedSegmentation"/>
+    </widget>
+    <widget class="QMenu" name="menu_Level_set">
+     <property name="title">
+      <string>&amp;Level set</string>
+     </property>
+     <addaction name="actionFastMarchingSegmentation"/>
+    </widget>
+    <addaction name="menuRegionGrowing"/>
+    <addaction name="menuWatershedBased"/>
+    <addaction name="menu_Level_set"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuFilters"/>
+   <addaction name="menuSegmentation"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionOpenImage">
+   <property name="text">
+    <string>&amp;Open image...</string>
+   </property>
+  </action>
+  <action name="actionBinaryThresholdFilter">
+   <property name="text">
+    <string>&amp;Binary threshold filter</string>
+   </property>
+  </action>
+  <action name="actionGeneralThresholdFilter">
+   <property name="text">
+    <string>&amp;General threshold filter</string>
+   </property>
+  </action>
+  <action name="actionCannyEdgeDetectionFilter">
+   <property name="text">
+    <string>&amp;Canny edge detection filter</string>
+   </property>
+  </action>
+  <action name="actionRescaleIntensityFilter">
+   <property name="text">
+    <string>&amp;Rescale intensity filter</string>
+   </property>
+  </action>
+  <action name="actionNormalizeFilter">
+   <property name="text">
+    <string>&amp;Normalize filter</string>
+   </property>
+  </action>
+  <action name="actionSigmoidFilter">
+   <property name="text">
+    <string>&amp;Sigmoid filter</string>
+   </property>
+  </action>
+  <action name="actionDerivativeFilter">
+   <property name="text">
+    <string>&amp;Derivative filter</string>
+   </property>
+  </action>
+  <action name="actionGradientAnisotropicDifussionFilter">
+   <property name="text">
+    <string>Gradient &amp;anisotropic difussion filter</string>
+   </property>
+  </action>
+  <action name="actionConnectedThresholdSegmentation">
+   <property name="text">
+    <string>&amp;Connected threshold</string>
+   </property>
+  </action>
+  <action name="actionConfidenceConnectedSegmentation">
+   <property name="text">
+    <string>Con&amp;fidence connected</string>
+   </property>
+  </action>
+  <action name="actionOtsuThresholdSegmentation">
+   <property name="text">
+    <string>&amp;Otsu threshold</string>
+   </property>
+  </action>
+  <action name="actionNeighborhoodConnectedSegmentation">
+   <property name="text">
+    <string>Neighborhood connected</string>
+   </property>
+  </action>
+  <action name="actionIsolatedConnected">
+   <property name="text">
+    <string>&amp;Isolated connected</string>
+   </property>
+  </action>
+  <action name="actionWatershedSegmentation">
+   <property name="text">
+    <string>Watershed segmentation</string>
+   </property>
+  </action>
+  <action name="actionFastMarchingSegmentation">
+   <property name="text">
+    <string>&amp;Fast Marching segmentation</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
