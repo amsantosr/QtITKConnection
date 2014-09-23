@@ -1,5 +1,9 @@
 PROJECT(QtITKConnection)
 
+set(CMAKE_AUTOMOC ON)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 IF(COMMAND CMAKE_POLICY)
@@ -13,17 +17,21 @@ ELSE(ITK_FOUND)
 	MESSAGE(FATAL_ERROR "Cannot build this application without ITK. Please set ITK_DIR")
 ENDIF(ITK_FOUND)
 
-FIND_PACKAGE(Qt4 REQUIRED)
+FIND_PACKAGE(Qt5Widgets REQUIRED)
 
-INCLUDE(${QT_USE_FILE})
+
 
 INCLUDE_DIRECTORIES(
-	${QT_INCLUDE_DIR}
+	${Qt5Widgets_INCLUDES}
 	${QtITKConnection_BINARY_DIR}
 	${QtITKConnection_SOURCE_DIR}
 	${CMAKE_CURRENT_BINARY_DIR} #this is where ui_ImageViewerUI.h is generated
 	${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+add_definitions(${Qt5Widgets_DEFINITIONS})
+
+set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
 SET(QtITKConnection_SRCS
 	binarythresholdfilterdialog.cpp
@@ -84,9 +92,7 @@ SET(QtITKConnection_UI
 	thresholdfilterdialog.ui
 	watershedsegmentationdialog.ui)
 
-QT4_AUTOMOC(${QtITKConnection_SRCS})
-
-QT4_WRAP_UI(QtITKConnection_UIS_H
+QT5_WRAP_UI(QtITKConnection_UIS_H
         binarythresholdfilterdialog.ui
         cannyedgedetectionfilterdialog.ui
         confidenceconnectedsegmentationdialog.ui
@@ -104,9 +110,9 @@ QT4_WRAP_UI(QtITKConnection_UIS_H
         thresholdfilterdialog.ui
         watershedsegmentationdialog.ui)
 
-QT4_WRAP_CPP(QtITKConnection_MOC_CPP ${QtITKConnection_HDRS})
-
 ADD_EXECUTABLE(QtITKConnection ${QtITKConnection_SRCS} ${QtITKConnection_UIS_H} ${QtITKConnection_MOC_CPP})
 
-TARGET_LINK_LIBRARIES(QtITKConnection ${ITK_LIBRARIES} ${QT_LIBRARIES})
+QT5_USE_MODULES(QtITKConnection Widgets)
+
+TARGET_LINK_LIBRARIES(QtITKConnection ${ITK_LIBRARIES} ${Qt5Widgets_LIBRARIES})
 
